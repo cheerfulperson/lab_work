@@ -1,0 +1,2 @@
+D:\code\c_c++\laba3\Debug\laba3.exe
+D:\code\c_c++\laba3\Debug\laba3.pdb

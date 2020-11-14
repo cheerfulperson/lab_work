@@ -1,0 +1,4 @@
+D:\code\c_c++\laba4.4.3\Debug\laba4.4.3.exe
+D:\code\c_c++\laba4.4.3\Debug\laba4.4.3.pdb
+E:\code\c_c++\laba4.4.3\Debug\laba4.4.3.exe
+E:\code\c_c++\laba4.4.3\Debug\laba4.4.3.pdb
