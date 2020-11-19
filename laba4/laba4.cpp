@@ -10,37 +10,41 @@ int main()
     srand(time(NULL));
     setlocale(LC_ALL, "Rus");
 
-    int k, zero_first_position,
+    int k,
         composition = 1,
         number_of_zeros = 0;
 
-    const int n = 20;
+    const int n = 5;
     int a[n] = {};
 
     cout << "Вы сами будете вводить элементы массива: 1 - да, 2 - нет "; cin >> k;
-    if (k == 1) {
+
         for (int i = 0; i < n; i++)
         {
-            cout << i << ")"; cin >> a[i];
+            if (k == 1) {
+                cout << i << ")"; cin >> a[i];
+            }
+            else {
+                a[i] = rand() % 21;
+                cout << a[i] << " ";
+            }        
         }
-    }
-    else {
-        for (int i = 0; i < n; i++)
-        {
-            a[i] = rand() % 21;
-            cout << a[i] << " ";
-        }
-    }
+
     for (int i = 0; i < n; i++) {
+       
         if (a[i] == 0 ) {
             number_of_zeros += 1;
-            zero_first_position = i;
         }
-        if (i > zero_first_position && number_of_zeros < 2) {
+        if (number_of_zeros == 1 && a[i] != 0) {
             composition *= a[i];
-        }  
+        }
+         
     }
-    cout << "Произведение равно " << composition;
+    if (number_of_zeros != 2 ) {
+        cout << "\nError: Нулей нет или всего один 0" << endl;
+        return 0;
+    }
+    cout << "Произведение равно " << composition << endl;
     return 0;
 
 }
