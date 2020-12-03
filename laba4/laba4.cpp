@@ -10,41 +10,32 @@ int main()
     srand(time(NULL));
     setlocale(LC_ALL, "Rus");
 
-    int k,
-        composition = 1,
-        number_of_zeros = 0;
+    int i,n, *a, p = 1,kol = 0, nom1, nom2;
 
-    const int n = 5;
-    int a[n] = {};
+    cout << "n = "; cin >> n;
+    a = new int[n];
 
-    cout << "Вы сами будете вводить элементы массива: 1 - да, 2 - нет "; cin >> k;
-
-        for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
         {
-            if (k == 1) {
-                cout << i << ")"; cin >> a[i];
-            }
-            else {
-                a[i] = rand() % 21;
-                cout << a[i] << " ";
-            }        
+                cout << "a[" << i << "] = "; cin >> a[i]; 
         }
 
-    for (int i = 0; i < n; i++) {
-       
-        if (a[i] == 0 ) {
-            number_of_zeros += 1;
+    for (int i = 0; i < n; i++) 
+        if (a[i] == 0 ) 
+        {
+                          kol++;
+                          if (kol == 1)nom1 = i;
+                          if (kol == 2)nom2 = i;
         }
-        if (number_of_zeros == 1 && a[i] != 0) {
-            composition *= a[i];
-        }
-         
-    }
-    if (number_of_zeros != 2 ) {
-        cout << "\nError: Нулей нет или всего один 0" << endl;
-        return 0;
-    }
-    cout << "Произведение равно " << composition << endl;
+    if(kol == 0)cout << "\nError: Нулей нет" << endl;
+    else if (kol == 1)cout << "\nError: всего один 0" << endl;
+    else if(nom2 == nom1 + 1) cout << "\nError: нет произведения" << endl;
+    else 
+    {
+            for (i = nom1 + 1; i < nom2; i++)p *= a[i];
+            cout << "Произведение между 1-ым и 2-ым нулями = " << p << endl;
+    }    
+    delete[] a;
     return 0;
 
 }
