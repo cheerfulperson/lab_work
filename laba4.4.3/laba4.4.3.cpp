@@ -16,14 +16,14 @@ int main()
 
     for (int i = 0; i < n; i++)
     {
-        cout << i << ")"; cin >> array[i];
+        cout << "a["<< i << "] = "; cin >> array[i];
     }
 
     deleteArrayElements(array, n);
-
-    for (int i = 0; i < n; i++) {
+    cout << " массив после удаления повторяющихся элементов" << endl;
+    for (int i = 0; i < n; i++)    
         cout << array[i] << " ";
-    }
+    cout << endl;
 
     delete[] array;
     return 0;
