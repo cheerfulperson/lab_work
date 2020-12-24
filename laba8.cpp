@@ -1,38 +1,78 @@
 ﻿// laba8.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+////
 //
+//#include <iostream>
+//#include <algorithm>
+//
+//using namespace std;
+//
+//int getNum(int* , int, int, int);
+//
+//int main()
+//{
+//    setlocale(_X_ALL, "Russian");
+//
+//    int n, i, c, element;
+//    cout << "Введите длинну массива: ";  cin >> n;
+//
+//    int *arr = new int[n];
+//
+//    for (i = 0; i < n; i++){ cout << "arr[" << i << "] = "; cin >> arr[i]; }
+//        
+//
+//    cout << "Упорядоченый массив: [";
+//    for (i = 0; i < n; i++) { cout << arr[i]; if (i != n - 1)cout << ","; }
+//    cout << "]" << endl;
+//        
+//
+//    cout << "Введите элемент искомый элемент с = "; cin >> c;
+//
+//    if (getNum(arr, c, 0, n - 1) == -1) cout << "Такого элемента в массиве нет" << endl;
+//    else  cout << "Номер вашего элемента: " << getNum(arr, c, 0, n -1) << endl;
+// 
+//    
+//    delete[]arr;
+//    return 0;
+//}
+////===============================================================
+//int getNum(int *a, int c, int l, int r) 
+//{
+//    if (l == r) if (a[l] == c) return l;
+//                          else return -1;
+//    int m = (l + r) / 2;
+//    if (a[m] < c) return getNum(a, c, m + 1, r); 
+//             else return getNum(a, c, l, m);
+//}
+
 
 #include <iostream>
-#include <algorithm>
 
 using namespace std;
 
-int getNum(int* &, int, int c);
+int getFunction(double, int, int);
 
-int main()
-{
-    setlocale(_X_ALL, "Russian");
-
-    int n, i, c, element;
-    cout << "Введите длинну массива: ";  cin >> n;
-
-    int *arr = new int[n];
-    for (i = 0; i < n; i++)
-    {
-        cout << "arr[" << i << "] = "; cin >> arr[i];
-    }
-    sort(arr, arr + n);
-    cout << "Номер элемента в массиве а = "; cin >> c;
-
-    cout << " Ваш элемент с = " << getNum(arr, n, c) << endl;
-    delete[]arr;
-    return 0;
+int main() {
+	int n,
+		d = 0;
+	double y = 0.5;
+	cout << "Введите число n = "; cin >> n;
+	y = getFunction(y, n, (n - 1));
+	cout << "y = " << y;
 }
-int getNum(int*& arr, int n, int c) {
-    if (n == c)      
-        return arr[n];
-    return getNum(arr, n - 1, c);
+int getFunction(double y, int n, int d) {
+	if (d == 0) {
+		return 1 / (n + y);
+	}
+	else if (d + 1 == n) {
+		//cout << y << " " << n << " " << d << " ";
+		return getFunction((1 / (1 + 0.5)), n, d--);
+	}
+	else {
+		y = 1 / (n - d + y);
+		return getFunction(y , n, d--);
+	}
 }
-
+//================================================================
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
 
